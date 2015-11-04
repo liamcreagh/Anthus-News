@@ -1,0 +1,101 @@
+ <!-- Top menu -->
+		<nav class="navbar" role="navigation">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#top-navbar-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">Andia - a super cool design agency...</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+
+                <div class="collapse navbar-collapse" id="top-navbar-1">
+					<ul class="nav navbar-nav navbar-right">
+
+
+                        {% if request.user.is_authenticated %}
+
+
+
+
+
+
+
+
+
+
+
+                        <! -- new --------------------------------------- -->
+<li><p class="welcome-message">Welcome, {{ request.user }}</p></li>
+
+                        <li>
+							<a href="/my_news"><i class="fa fa-newspaper-o"></i><br>My News</a>
+						</li>
+
+
+
+
+						<li>
+							<a href="/analytics"><i class="fa fa-line-chart"></i><br>Analytics</a>
+						</li>
+
+
+
+
+						<li>
+							<a href="/my_profile"><i class="fa fa-user"></i><br>My Profile</a>
+                         </li>
+
+
+						<li>
+							<a href="/contact"><i class="fa fa-envelope"></i><br>Contact</a>
+						</li>
+            <li>
+							<a href="/accounts/logout"><i class="fa fa-sign-out"></i><br>Logout</a>
+						</li>
+
+
+                                {% else %}
+
+
+                        <li>
+							<a href="/accounts/register"><i class="fa fa-pencil-square-o"></i><br>Register</a>
+						</li>
+
+                        <li>
+							<a href="/accounts/login"><i class="fa fa-sign-in"></i><br>Login</a>
+						</li>
+
+                        <li>
+							<a href="/contact"><i class="fa fa-envelope"></i><br>Contact</a>
+						</li>
+
+
+
+
+
+
+              {% endif %}
+
+
+					</ul>
+
+
+
+
+
+
+
+
+
+
+				</div>
+			</div>
+		</nav>
+
+
+
+    </nav>

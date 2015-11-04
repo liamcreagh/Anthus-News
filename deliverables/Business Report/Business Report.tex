@@ -1,0 +1,195 @@
+\documentclass[11pt]{article}
+\usepackage{arev}
+\linespread{1.1}
+\usepackage[capitalise]{cleveref}
+\usepackage{subcaption}
+\usepackage{natbib}
+\usepackage{url}
+\usepackage[left=3cm, right=3cm]{geometry}
+\usepackage{xcolor}
+\usepackage{amsmath}
+\usepackage[some]{background}
+\usepackage{lipsum}
+\usepackage[official]{eurosym}
+
+\definecolor{titlepagecolor}{cmyk}{0,.40,0.08,0}
+
+\backgroundsetup{
+scale=1,
+angle=0,
+opacity=1,
+contents={\begin{tikzpicture}[remember picture,overlay]
+ \path [fill=titlepagecolor] (current page.west)rectangle (current page.north east); 
+ \draw [color=white, very thick] (5,0)--(5,0.5\paperheight);
+\end{tikzpicture}}
+}
+
+\makeatletter                   
+\def\printauthor{%                  
+    {\large \@author}}          
+\makeatother
+
+\author{%
+    	\textbf{Katharine Cooney}\\
+    \texttt{katharine.cooney@ucdconnect.ie}\vspace{10pt} \\
+       \textbf{ Liam Creagh}\\
+    \texttt{liam.creagh@ucdconnect.ie}\vspace{10pt} \\
+        \textbf{James Doolan}\\
+    \texttt{james.doolan@ucdconnect.ie}\vspace{10pt} \\
+        \textbf{Shuyu Huang}\\
+    \texttt{shuyu.huang@ucdconnect.ie}\vspace{10pt} \\
+       \textbf{ Kang Li}\\
+    \texttt{kang.li@ucdconnect.ie}
+    }
+
+
+\usepackage{booktabs,url,graphicx,sidecap, multirow, tabu}
+
+\newcommand{\ie}{\emph{i.e. }}
+\newcommand{\etc}{\emph{etc. }}
+
+\begin{document}
+\begin{titlepage}
+\BgThispage
+\newgeometry{left=1cm,right=6cm,bottom=2cm}
+\vspace*{0.4\textheight}
+\noindent
+\textcolor{white}{\Huge\textbf{\textsf{Business Proposition}}}
+\vspace*{2cm}\par
+\noindent
+\begin{minipage}{0.55\linewidth}
+    \begin{flushright}
+        \printauthor
+    \end{flushright}
+\end{minipage} \hspace{30pt}
+%
+\begin{minipage}{0.02\linewidth}
+    \rule{1pt}{175pt}
+\end{minipage} \hspace{-10pt}
+%
+\begin{minipage}{0.63\linewidth}
+\vspace{5pt}
+
+\end{minipage}
+\end{titlepage}
+\restoregeometry
+
+
+\section{Customer Segments}
+
+We are creating value for 3 main customer segments.
+
+\begin{description}
+\item[General Users] - The general users is anyone who has an account with us and uses our news feed. The users will have free access to our website and will never be asked to pay for the service. The idea behind this is that free access will help generate the largest traffic possible for the site.
+ 
+\item[Large News Outlets] - The large news outlets are the big online news websites we are using for the bulk of our feed content to attract a high volume of traffic to our website (general users).  E.g. Reuters, Time etc. We will be creating value by sending traffic to these outlets.
+
+\item[Paying Customers] - These are any smaller news outlets that want to be included in our feed as well as any individual who wants to promote a specific article. We will be creating value by increasing traffic to these individual articles or small outlets. This is our most important customer segment as it is our targeted source of income.
+\end{description}
+
+\section{Value Proposition}
+
+Satisfying customers is the source of sustainable value creation.\citep{kaplan2004strategy} We plan to satisfy the needs of all three customer segments as all 3 will benefit from our service, but we will prioritise our commitments. Our two-step approach is to first,  satisfy the general user and then aim our efforts at satisfying paying customers. 
+
+Our number one obligation is to create a simple and usable software platform that will satisfy our general users. We need this first as high traffic is a prerequisite in creating value for the paying customer. We can then utilise the traffic by sending it to our paying customers sites and articles.  
+
+We will create value for the general user by providing:
+
+\begin{itemize}
+\item A centralised news source
+\item Streamlined profile creation
+\item Personalised user experience
+\item Diverse content
+\end{itemize}
+
+We will create value for the paying customers by providing:
+\begin{itemize}
+\item Increased traffic for smaller outlets
+\item Increased traffic for individual articles 
+\item Help raise their online profile
+\item Potential new readers 
+\end{itemize}
+
+\section{Channels}
+We will be reaching out to our different customer segments through a variety of channels. We will use partner channels when communicating with the general user and used owned channels to communicate with paying customers. No channel will exist for large news outlets, as it is unnecessary.
+
+We will use partner channels such as Facebook \cite{fb} and Twitter \cite{twitter} to communicate with our users and provide awareness of the site. These will act as a promotional tool as well, as help us contact general users in an informal way. We will also provide a contact page for feedback and evaluation and to help and maintain our customer relationships with our general users. We will integrate an e-commerce element using Shopify \cite{shopify} to the site when the minimum desired traffic is reached and implement the final 3 channel phases, Purchase, Delivery and After Sales within our site. 
+
+We intend to add a page where paying customers can sign up for subscriptions, submit their business site Url or pay for individual articles. The reasoning behind our channel choice for the general user is that it is cheap, cost effective and establishes an informal relationship with them. The reasoning behind a special section for paying customers is that is creates a sense of exclusivity and establishes a formal relationship with them.
+
+\section{Customer Relationships}
+\begin{center}
+\emph{``The customer should be the primary focus for most organisations'' }\cite{swift2001accelerating}
+\end{center}
+
+With the general user we will have a predominantly automated-service relationship. The user should be able to create an account and edit the content and profile information themselves, with no input on our side. 
+
+With large news outlets we will have no real direct relationship. There will be a mutually beneficial relationship with them. This will be achieved by creating extra traffic for them and using their material as our content.
+
+With our paying customers we will have a part personal and part self-service relationship. We will aim to automate the services through subscriptions by adding an in-site shopify e-commerce payment platform \cite{shopify}. They will also be co-creators as they will be providing us with some of our content. We will also include personal lines of communication such as email and phone lines but we will aim to automate the process to limit this.
+
+\section{Revenue Streams}
+
+
+\begin{center}
+\emph{``After years of experimenting, no business models seem to generate reliable revenue streams for online news services''}\cite{chyi2005willingness}
+\end{center}
+
+The value that our customers will be paying for is increased awareness, traffic and new users. The value will be relative to the amount of traffic generated that is directed towards the user's site. Our two main sources of income will be generated from two services offered. The first will be from monthly subscriptions and the second will be from priority articles. If we are not successful in attaining sufficient income based on promoted articles and subscription fees we will seek an advertising partnership to supplement our income.
+
+\paragraph{Monthly Subscriptions} - These will incur an additional fee to cover developer costs as well as incentivise subscription members to stay by investing up front. This has been implemented before by creating traffic to blogs and articles \cite{bloggeries}.
+
+\begin{description}
+\item[Addition Fee] -	Developer costs to add a new outlet to the feed
+\begin{itemize}
+\item Early Adopters (\euro{}29) / General (\euro{}99)
+\end{itemize}
+
+\item[Premium Accounts] - Monthly Subscriptions for small news outlets
+\begin{itemize}
+\item Silver Membership: General Inclusion
+\item Gold Membership:		\(50\%\) Increased Matching
+\item Platinum Membership:	\(100\%\) Increased Matching
+\end{itemize}
+
+
+\end{description}
+
+\paragraph{Priority Articles} - An Article shows up in a feed regardless of best matching. This is used in the Twitter business model \cite{twitter_model}, as well as in Reddit's sponsored posts feature. The user can submit a link to Anthus News and allocate the amount they are willing to spend on promoting that particular article. This will be very similar to Google AdWords \cite{adwords} and offer a flat rate based on Pay Per Click (PPC) \cite{wordstream}. We will categorise the sponsored article so as to avoid low click-through rates and spamming our general users.
+
+\section{Key Resources}
+
+\begin{description}
+\item[Servers] - Our main physical resource we need are rented cloud servers for hosting and processing. We need a physical server that is capable of handling all the traffic coming into the site as well as process all the data that the site uses. We will be renting these from Amazon Elastic Compute Cloud (EC2) a part of Amazon Web Services (AWS) \cite{amazon_aws}.
+\item[Software] - Our main intellectual resource is our software. This is probably our biggest asset as it is what sets us apart from the competition. Our value proposition is focused on the idea of having a solid unique website.
+\item[News Articles] - This is any content that we get from both the large news outlets and paying customers. 
+\item[Developers and Media Experts] - Our human resource will require developers and media experts to help maintain and handle the website. This will include maintaining personal customer relationships and promotion on social media. 
+\item[Funds] - Our financial resources as stated in revenue streams comes from paying customers. 
+\end{description}
+
+
+\section{Plan Overview and Timeline}
+
+\begin{center}
+\emph{``Technology by itself has no single objective value. The economic value of a technology remains latent until it is commercialized in some way via a business model.''}\cite{chesbrough2010business}
+\end{center}
+
+\begin{enumerate}
+\item Our main goal is to first create software that will be unique and therefore exploit a gap in the market by delivering on our value proposition stated above. 
+
+\item Once this software goes into the production stage we will then aim to increase the traffic to the minimal limit point where a subscription is of real value to small 
+news outlets due to increased traffic and awareness. 
+
+\item The next step is to implement our Revenue Stream services plan to help generate a working business.
+
+\item Once we have been successfully monetised we intend to try and raise the value of the site by showing we can run it like a business.
+
+\item If we can successfully create a valuable business we intend to sell it on to guarantee us a profit.
+\end{enumerate}
+
+\bibliographystyle{unsrt}
+\bibliography{business_ref}
+
+
+
+\end{document}

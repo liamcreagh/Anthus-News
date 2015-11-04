@@ -1,0 +1,55 @@
+This is BibTeX, Version 0.99d (TeX Live 2014)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: Demo Report.aux
+The style file: unsrt.bst
+Database file #1: references.bib.bib
+Warning--empty booktitle in recommender_analysis
+Warning--empty author in news360
+Warning--empty journal in news360
+Warning--empty year in news360
+Warning--empty author in andia
+Warning--empty journal in andia
+Warning--empty year in andia
+Warning--empty journal in wholikeswhat
+You've used 8 entries,
+            1791 wiz_defined-function locations,
+            482 strings with 4674 characters,
+and the built_in function-call counts, 1894 in all, are:
+= -- 155
+> -- 95
+< -- 2
++ -- 35
+- -- 27
+* -- 127
+:= -- 284
+add.period$ -- 22
+call.type$ -- 8
+change.case$ -- 7
+chr.to.int$ -- 0
+cite$ -- 16
+duplicate$ -- 96
+empty$ -- 185
+format.name$ -- 27
+if$ -- 429
+int.to.chr$ -- 0
+int.to.str$ -- 8
+missing$ -- 9
+newline$ -- 39
+num.names$ -- 6
+pop$ -- 47
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 46
+stack$ -- 0
+substring$ -- 89
+swap$ -- 25
+text.length$ -- 2
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 8
+while$ -- 14
+width$ -- 9
+write$ -- 76
+(There were 8 warnings)

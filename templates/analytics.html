@@ -1,0 +1,297 @@
+{% extends "base.html" %}
+
+{% block head_title %} Sign Up {% endblock %}
+
+{% block content %}
+
+{% if has_twitter %}
+
+ <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+      google.load("visualization", "1", {packages:["corechart", 'line', "bar"]});
+      google.setOnLoadCallback(drawCharts);
+
+        function drawCharts() {
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          {% for topic in top_twitter %}
+            ['{{topic.1}}', {{topic.2}}],
+          {% endfor %}
+        ]);
+        var options = {
+        chartArea:{left:10,top:20,width:"100%",height:"100%"},
+        {% autoescape off %}
+         colors: {{twitter_colours}}
+        {% endautoescape %}
+
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          {% for topic in top_explicit %}
+            ['{{topic.1}}', {{topic.2}}],
+          {% endfor %}
+        ]);
+
+        var options = {
+            chartArea: {left:10,top:20,width:"100%",height:"100%"},
+                {% autoescape off %}
+                colors: {{explicit_colours}}
+                {% endautoescape %}
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('piechart1'));
+        chart.draw(data, options);
+
+      }
+    </script>
+
+<div class="page-heading"> <h3>Analytics  <i class="fa fa-line-chart"></i></h3></div>
+
+<p> {{ top_interest.1 }}</p>
+
+<div class="row">
+  <div class="col-md-6">
+      <text rabl-use-parent="true" x="0" y="12"
+            style="cursor: default;
+            -webkit-user-select: none; -webkit-font-smoothing: antialiased;
+            font-family: Roboto2; font-size: 16px;" fill="#757575" dx="0px">
+
+          Top interests from Twitter
+      </text><br>
+
+      <text rabl-use-parent="true" x="0" y="30.5" style="cursor: default; -webkit-user-select: none; -webkit-font-smoothing: antialiased; font-family: Roboto2; font-size: 14px;" fill="#BDBDBD" dx="0px">
+
+          These are the topics that we generated for your profile, based on your Twitter account.
+          These are only the top topics so other topics not listed here my still appear in your feed.
+      </text>
+      <div id="piechart">
+
+      </div>
+  </div>
+  <div class="col-md-6">
+            <text rabl-use-parent="true" x="0" y="12"
+            style="cursor: default;
+            -webkit-user-select: none; -webkit-font-smoothing: antialiased;
+            font-family: Roboto2; font-size: 16px;" fill="#757575" dx="0px">
+
+            Top rated interests
+            </text><br>
+
+      <text rabl-use-parent="true" x="0" y="30.5" style="cursor: default; -webkit-user-select: none; -webkit-font-smoothing: antialiased; font-family: Roboto2; font-size: 14px;" fill="#BDBDBD" dx="0px">
+
+          These are the topics that you have expressed interest in.
+          Go to <a href="/my_profile">your profile page</a> if you want to change these. Other topics may appear in your feed due to your twitter preferences.
+      </text>
+      <div id="piechart1">
+
+      </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">
+
+      google.setOnLoadCallback(drawStuff);
+
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Activity vs Profile', 'What You Views', 'Your Profile'],
+          ['Politics', 40, 23.3],
+          ['Dance', 44, 43.5],
+          ['Pogs', 42, 14.3],
+          ['Pants', 44, 12.9],
+          ['Salt', 50, 33]
+        ]);
+
+        var options = {
+        chartArea:{left:20,top:50,right:20,bottom:20, width:'100%',height:'100px'},
+
+          chart: {
+            title: 'Profile vs Reads',
+            subtitle: 'See what you actually read compared to your profile settings'
+          },
+
+          axes: {
+            y: {
+              brightness: {label: 'parsecs'}, // Left y-axis.
+              brightness: {side: 'right', label: 'apparent magnitude'} // Right y-axis.
+            }
+          }
+        };
+
+      var chart = new google.charts.Bar(document.getElementById('dual_y_div'));
+      chart.draw(data, options);
+    };
+    </script>
+
+
+
+
+   <!--<script type="text/javascript">-->
+
+
+    <!--google.load("visualization", "1", {packages:["corechart"]});-->
+    <!--google.setOnLoadCallback(drawChart);-->
+    <!--function drawChart() {-->
+
+     <!--var data = new google.visualization.DataTable();-->
+    <!--data.addColumn('string', 'Topic');-->
+    <!--data.addColumn('number', 'Clicks');-->
+    <!--data.addColumn({type: 'string', role: 'style'});-->
+      <!--data.addRows([-->
+        <!--{% autoescape off %}-->
+        <!--{% for topic in clicked_topics %}-->
+
+            <!--['{{topic.1}}', {{topic.2}},  'color:#ff0000'],-->
+
+         <!--{% endfor %}-->
+        <!--{% endautoescape %}-->
+         <!--['BLAH', 20,  'color:#ff0000']-->
+      <!--]);-->
+
+      <!--var view = new google.visualization.DataView(data);-->
+      <!--view.setColumns([0, 1,-->
+                       <!--{ calc: "stringify",-->
+                         <!--sourceColumn: 1,-->
+                         <!--type: "string",-->
+                         <!--role: "annotation" },-->
+                       <!--2]);-->
+
+      <!--var options = {-->
+       <!--chartArea:{left:20,top:50,right:20,bottom:20, width:'100%',height:'50%'},-->
+
+        <!--bar: {groupWidth: "95%"},-->
+        <!--legend: { position: "none" },-->
+      <!--};-->
+      <!--var chart = new google.charts.Bar(document.getElementById("columnchart_values"));-->
+      <!--chart.draw(view, options);-->
+  <!--}-->
+  <!--</script>-->
+
+<script type="text/javascript">
+    google.load("visualization", "1", {packages:["corechart"]});
+    google.setOnLoadCallback(drawChart);
+    function drawChart() {
+      var data = google.visualization.arrayToDataTable([
+        ["Topic", "Clicks", { role: "style" } ],
+        {% autoescape off %}
+        {% for topic in clicked_topics %}
+
+            ['{{topic.1}}', {{topic.2}},  "{{topic.3}}"],
+
+         {% endfor %}
+        {% endautoescape %}
+      ]);
+
+      var view = new google.visualization.DataView(data);
+      view.setColumns([0, 1,
+                       { calc: "stringify",
+                         sourceColumn: 1,
+                         type: "string",
+                         role: "annotation" },
+                       2]);
+
+      var options = {
+        chartArea:{left:20,top:50,right:20,bottom:20, width:'100%',height:'50%'},
+        bar: {groupWidth: "95%"},
+        legend: { position: "none" },
+      };
+      var chart = new google.visualization.ColumnChart(document.getElementById("columnchart_values"));
+      chart.draw(view, options);
+  }
+ </script>
+
+ {% if not no_clicks %}
+<div class="row">
+  <div class="col-md-12">
+      <text rabl-use-parent="true" x="0" y="12"
+            style="cursor: default;
+            -webkit-user-select: none; -webkit-font-smoothing: antialiased;
+            font-family: Roboto2; font-size: 16px;" fill="#757575" dx="0px">
+
+          Most-read Topics
+      </text><br>
+
+      <text rabl-use-parent="true" x="0" y="30.5" style="cursor: default; -webkit-user-select: none; -webkit-font-smoothing: antialiased; font-family: Roboto2; font-size: 14px;" fill="#BDBDBD" dx="0px">
+
+          These are the topics that you read the most. Our system takes your click-throughs into account when finding articles for you.
+      </text>
+
+
+
+      <div id="columnchart_values" >
+
+
+
+      </div>
+  </div>
+
+     {% endif %}
+
+
+
+</div>
+
+<!--<div class="row">-->
+  <!--<div class="col-md-12">-->
+
+  <!--</div>-->
+
+<!--</div>-->
+
+<!--<h3>Topics</h3>-->
+<!--<table class="table">-->
+
+    <!--<th>Following</th>-->
+    <!--<th>Main Topic</th>-->
+    <!--<th>Topic 2</th>-->
+    <!--<th>Topic 3</th>-->
+
+
+
+<!--{%  for var in topics %}-->
+
+
+
+    <!--{% include 'table_partial.html' %}-->
+    <!--{% endfor %}-->
+
+
+<!--</table>-->
+
+
+
+
+
+<!--<div class="row">-->
+  <!--<div class="col-md-8">Test</div>-->
+  <!--<div class="col-md-4">Test</div>-->
+<!--</div>-->
+
+
+{% else %}
+{% include 'jumbo_twitter.html' %}
+{% endif %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{% endblock  %}

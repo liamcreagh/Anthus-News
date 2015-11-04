@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %} Test{% endblock %}
+
+
+{% block content %}
+
+
+  {% if request.user.is_authenticated %}
+
+<h1>Welcome {{ request.user }} </h1>
+
+        {% else %}
+
+
+
+
+    {% include 'jumbo.html' %}
+
+ {% endif %}
+{% endblock  %}
+
+
+
+
+

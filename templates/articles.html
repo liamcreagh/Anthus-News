@@ -1,0 +1,127 @@
+{% load endless %}
+{% paginate entries %}
+
+
+<script>
+
+    function logClickThrough(tag) {
+        $.ajax({
+            url: "{% url 'user_profile.views.update_clicks' %}" ,
+            type: "post",
+            data: {"tag":tag},
+
+        });
+    }
+
+    function sortBy(tag) {
+    $.ajax({
+            url: "{% url 'news.views.by_topic' %}" ,
+            type: "post",
+            data: {"topic_id":tag},
+
+        });
+    }
+</script>
+
+
+
+{% for entry in entries %}
+
+    <div class="row">
+            {% if entry.0 %}
+
+            <article class="col-md-12">
+            <a href="{{ entry.1.article_url }}" onclick="logClickThrough('{{ entry.1.article_tag.name }}')" target="_blank">
+
+                <div class="col-md-3 col-xs-12">
+                    <img class="art_img float_left" src="{{entry.1.article_image}}" alt="" />
+                </div>
+                <div class="col-md-9 col-xs-12">
+                    <h3 style="margin-top:0px;">{{ entry.1.article_title }}</h3>
+                    <p>{{ entry.1.article_description }}</p>
+                    <p>{{ entry.1.article_published }} </p>
+
+
+                 <a href="/by_topic?t={{entry.1.article_tag.id}}">
+                    <button type="button" class="btn btn-default btn-xs" style="background:{{entry.1.article_tag.colour}};" >
+                        <i class="{{ entry.1.article_tag.icon}}" aria-hidden="true"></i>
+                        {{ entry.1.article_tag.name }}
+                    </button>
+                </a>
+                </div>
+            </a>
+
+            </article>
+
+
+            {% else %}
+
+            <article class="col-md-4">
+
+                <a href="{{entry.1.article_url}}" onclick="logClickThrough('{{entry.1.article_tag.name}}')" target="_blank">
+                    <div style="height:90px; overflow:hidden;">
+                        <h3 style="margin-top:0px;">{{ entry.1.article_title }}</h3>
+                        <p>{{ entry.1.article_description }}</p>
+                    </div>
+
+                    <p>{{ entry.1.article_published }} </p>
+                </a>
+                 <a href="/by_topic?t={{entry.1.article_tag.id}}">
+                     {% autoescape off %}
+                    <button type="button" class="btn btn-default btn-xs" style="background:{{entry.1.article_tag.colour}};" >
+                        {% endautoescape%}
+                        <span class="{{entry.1.article_tag.icon}}" aria-hidden="true"></span>
+                        {{ entry.1.article_tag.name }}
+                    </button>
+                </a>
+            </article>
+
+            <hr class="divider">
+
+            <article class="col-md-4">
+                <a href="{{entry.2.article_url}}" onclick="logClickThrough('{{ entry.2.article_tag }}')" target="_blank">
+                    <div style="height:90px; overflow:hidden;">
+                        <h3 style="margin-top:0px;">{{ entry.2.article_title }}</h3>
+                        <p>{{ entry.2.article_description }}</p>
+                    </div>
+                    <p>{{ entry.2.article_published }} </p>
+                </a>
+
+                <a href="/by_topic?t={{entry.2.article_tag.id}}">
+                     {% autoescape off %}
+                    <button type="button" class="btn btn-default btn-xs" style="background:{{entry.2.article_tag.colour}};" >
+                        {% endautoescape%}
+                        <span class="{{entry.2.article_tag.icon}}" aria-hidden="true"></span>
+                        {{ entry.2.article_tag.name }}
+                    </button>
+                </a>
+
+            </article>
+
+            <hr class="divider">
+
+            <article class="col-md-4">
+                <a href="{{entry.3.article_url}}" onclick="logClickThrough('{{entry.3.article_tag}}')" target="_blank">
+                    <div style="height:90px; overflow:hidden;">
+                        <h3 style="margin-top:0px;">{{ entry.3.article_title }}</h3>
+                        <p>{{ entry.3.article_description }}</p>
+                    </div>
+                    <p>{{ entry.3.article_published }} </p>
+                </a>
+                <a href="/by_topic?t={{entry.3.article_tag.id}}">
+                     {% autoescape off %}
+                    <button type="button" class="btn btn-default btn-xs" style="background:{{entry.3.article_tag.colour}};" >
+                        {% endautoescape%}
+                        <span class="{{entry.3.article_tag.icon}}" aria-hidden="true"></span>
+                        {{ entry.3.article_tag.name }}
+                    </button>
+                </a>
+
+            </article>
+
+            {% endif %}
+    </div>
+<hr>
+
+{% endfor %}
+{% show_more %}

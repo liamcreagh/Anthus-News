@@ -1,0 +1,96 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}
+\linespread{1.1}
+\usepackage[top=2cm]{geometry}     
+\geometry{letterpaper}                 
+\usepackage{graphicx, url}
+\usepackage[capitalise]{cleveref}
+
+\title{\Huge{Deliverable 1} \\ \huge{Project Overview}}
+\author{\textbf{\Large{Pink Team}}\\ 
+James Doolan (Project Manager)\\ 
+Katharine Cooney (Communications)\\
+Liam Creagh (Business)\\
+Shuyu Huang (UX)\\
+Kang Li (Developer)}
+\date{\today}                                     
+
+\newcommand{\ie}{\emph{i.e.} }
+\newcommand{\etc}{\emph{etc.} }
+\newcommand{\eg}{\emph{e.g.} }
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+\subsection{Overview}
+
+Our project is a content-based news recommender system, which will make recommendations based on social media behaviour. User data from Twitter (tweets, followed users, retweets), and Reddit (comments, upvotes, downvotes, subreddit subscriptions etc.) will be collected and used to provide recommendations.
+
+We will initially use a simple method of generating recommendations, and we are currently researching several more sophisticated approaches (see \cref{related_work}). In addition to the content-based method we are currently utilising, we also hope to incorporate basic implicit feedback, \ie click-throughs, and some functionality to allow users to remove certain articles from their feed.
+
+\subsection{Motivations}
+
+Our method of recommendation circumvents several problems inherent in recommender systems, \eg the ``cold start'' problem, where the system cannot provide accurate recommendations if there are few ratings to begin with. Several studies in this area have shown that users are unlikely to supply explicit ratings \cite{overview_recommender}, and in some cases, that users' declared interest did not strongly predict their actual interest.\cite{user_attitudes}
+
+\subsection{Related Work}
+\label{related_work}
+
+During our research into this area, we found many projects that attempt to address similar issues. One that we found particularly interesting was \emph{Who Likes What?}, a web application which uses Twitter's Lists functionality to determine latent user-topic relationships\cite{who_likes_what}. (The application is available at \url{http://twitter-app.mpi-sws.org/who-likes-what/}). We intend to explore these ideas more fully after the first prototype has been completed.
+
+\subsection{Success Criteria}
+Kapanipathi, Pavan, et al.\cite{who_likes_what} state that "one of the best ways of evaluating the quality of inferred interests is through direct human feedback". They use volunteers to provide feedback on their recommendations by presenting them with a choice of recommendation lists from unidentified sources. The users are then asked them to rank the lists on accuracy and completeness. We propose to use this methodology to assess our recommendations. The success criterion would be the percentage of users who ranked our recommendations as number 1. We still need to determine what listings we would be comparing to.
+
+\subsection{Technology}
+
+We will be using Django and Python to build our web application. The application will be backed by a PostgreSQL database. Article content will obtained by parsing RSS feeds, following the urls to the articles and parsing their HTML. 
+
+\section{Minimum Viable Product}
+
+\subsection{Features} 
+Our minimum viable product will be a condensed form of the full version. The main features of the MVP are as follows:
+
+\begin{itemize}
+\item User data will initially be gathered from Twitter only, in order to familiarise ourselves with the process of integrating with an API. We will move towards including other sources of user profiles (Reddit, Facebook) at a later stage in the project.
+
+\item Content data will be obtained through the Reuters RSS feed. We felt this was a good place to start, as we can obtain a wide variety of news from a respected source. We will eventually include other content sources.
+
+\item Basic signup and login functionality; the MVP will have a ``connect with Twitter" option. Reddit connection will be added at a later stage.
+
+\item Very simple method of recommendation; we will take the most common words from the user's Twitter and compare with the articles' content, recommending the articles with the highest occurrence of those terms.
+
+\end{itemize}
+
+\subsection{Desired Outcome}
+
+The main objectives for our MVP are as follows:
+
+ \begin{itemize}
+ 	\item Lay down the foundation for our application, \ie basic functionality, leaving room for expansion and improvements in the later stages of the project
+	
+	\item Familiarise ourselves with new concepts and material (\eg Twitter API, Django, natural language processing \etc)
+    
+    \item Produce some kind of recommendation, the quality of which is not expected to be high.
+    
+    \item Work together as a team using agile methodologies.
+    
+ \end{itemize}
+
+\subsection{Scrum}
+
+Our team will be following the Scrum methodology in this project, and we have decided to use Trello to organise our product and sprint backlogs. We have daily meetings and coding sessions, and keep each other appraised of our progress.
+
+\bibliographystyle{unsrt}
+
+\begin{thebibliography}{20}
+\bibitem{overview_recommender} Doychev, Lawlor, et al. ``An Analysis of Recommender Algorithms for Online News'', \emph{CLEF}, 2014.
+
+\bibitem{user_attitudes} Lavie, Talia, et al. "User attitudes towards news content personalization." \emph{International journal of human-computer studies} 68.8 (2010): 483-495.
+
+
+\bibitem{who_likes_what} Bhattacharya, Parantapa, et al. "Inferring user interests in the twitter social network." \emph{Proceedings of the 8th ACM Conference on Recommender systems}. ACM, 2014.
+\end{thebibliography}
+
+\end{document}  

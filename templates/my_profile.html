@@ -1,0 +1,208 @@
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="/resources/demos/style.css">
+
+{% extends "base.html" %}
+
+{% block head_title %} Sign Up {% endblock %}
+
+{% block content %}
+
+<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+
+
+
+
+<script>
+    function updateProfile() {
+
+        var IDs = {};
+        $("#interested .pref-entry").each(function() {
+            IDs[this.id] = this.querySelector(".slider span").style.left;
+        });
+
+        console.log (IDs);
+
+        $.ajax({
+            url: "{% url 'user_profile.views.update_profile' %}" ,
+            data: {"item":IDs},
+            type: "post",
+            complete: function() {
+                location.reload(true);
+            }
+        });
+    }
+
+    function updateTwitter(){
+        $.ajax({
+            url: "{% url 'user_profile.views.update_twitter' %}" ,
+            type: "post",
+
+            complete: function() {
+                location.reload(true);
+            }
+        });
+    }
+</script>
+
+<script>
+    function removeElement(v) {
+        var el = $(document.getElementById(v)).fadeTo(400,0,'linear',
+
+            function(){
+                $(this).hide(200, 'linear',
+
+                    function(){
+                        $(this).appendTo("#not-interested");
+                        $(this).fadeTo(400,1,'linear');
+                    }
+                );
+            }
+        );
+    }
+
+    function addElement(v) {
+        var el = $(document.getElementById(v)).fadeTo(400,0,'linear',
+
+            function(){
+                $(this).hide(200, 'linear',
+
+                    function(){
+                        $(this).appendTo("#interested");
+                        $(this).fadeTo(400,1,'linear');
+                    }
+                );
+            }
+        );
+    }
+
+</script>
+
+
+{% if has_twitter %}
+
+<div class="page-heading">
+    <h3>My Profile  <i class="fa fa-user"></i></h3>
+</div>
+
+
+
+<div class="row profile-entry">
+    <ul class="col-md-6" id="interested">
+        <h4>My Topics <a href="#" title="These are the topics your are interested in. If you are not, removed it or lower its frequency in the slider to see less of the topic in the feed." data-toggle="popover" data-trigger="hover" data-content=""><i class="fa fa-question-circle"></i></a></h4>
+        {%  for var_my in my_interests %}
+        <div id="{{var_my.0}}" class="page-heading pref-entry">
+            <span>
+                {{var_my.1}}
+                <button class="glyphicon glyphicon-plus add-button" onclick="addElement('{{var_my.0}}')"></button>
+                <button class="glyphicon glyphicon-minus remove-button" onclick="removeElement('{{var_my.0}}')"></button>
+
+            </span>
+            <div class="slider">
+            </div>
+             <script>
+                $("#{{var_my.0}} .slider").slider({
+                value: {{var_my.2}}
+
+                });
+
+             </script>
+        </div>
+        {% endfor %}
+    </ul>
+    <div class="col-md-6" id = "not-interested">
+        <h4>Other Topics <a href="#" title="These are the topics you are not really interested in. If you are, add them to the My Topics list. Some of these topics may still appear in your feed due to your twitter preferences." data-toggle="popover" data-trigger="hover" data-content=""><i class="fa fa-question-circle"></i></a></h4>
+        {%  for var in suggested_interests %}
+
+        <div id="{{var.0}}" class="page-heading pref-entry">
+            <span>
+                {{var.1}}
+                <button class="glyphicon glyphicon-plus add-button" onclick="addElement('{{var.0}}')"></button>
+                <button class="glyphicon glyphicon-minus remove-button" onclick="removeElement('{{var.0}}')"></button>
+            </span>
+            <div class="slider" ></div>
+            <script>
+                $("#{{var.0}} .slider").slider({
+                value: {{var.2}}
+
+                });
+
+             </script>
+
+        </div>
+        {% endfor %}
+    </div>
+
+
+</div>
+
+<div class="row">
+<div  class="col-md-6">
+    <button class="btn" onclick="updateProfile()">Save Changes</button>
+</div>
+
+</div>
+
+
+
+
+<div class="row profile-entry">
+
+<hr />
+
+        <div class="col-md-6">
+        <h4>Account Settings</h4>
+        <button class="btn" href="/accounts/password/change/">Change Password</button>
+
+    </div>
+
+
+
+    <div class="col-md-6">
+
+       <h4>Reload Twitter</h4>
+         <a href="https://twitter.com/{{twitter_handle}}">
+
+                <img src="{{twitter_image}}" class="twitter_img">
+                 <h5>{{twitter_name}}</h5>
+                    <p>@{{twitter_handle}}</p>
+
+         </a>
+
+
+<br />
+
+             <p>Click here to reload your Twitter profile. WARNING: This will reset your profile settings. </p>
+        <button class="btn" onclick="updateTwitter()">Reload Twitter Profile</button>
+
+
+
+    </div>
+
+
+</div>
+
+{% else %}
+<div class="row">
+    <div class="col-md-12">
+        <h4>Account Settings</h4>
+        <button class="btn" href="/accounts/password/change/">Change Password</button>
+
+    </div>
+</div>
+
+{% endif %}
+
+<!--<div class="row profile-entry">-->
+    <!-- -->
+
+    <!--<div class="col-md-6">-->
+        <!--<h4>Other</h4>-->
+        <!--<p><a target="_blank" href="https://www.facebook.com/anthusnews1">Follow Us on Twitter</a></p>-->
+        <!--<p><a target="_blank" href="https://twitter.com/anthusnews">Like us On Facebook</a></p>-->
+    <!--</div>-->
+
+<!--</div>-->
+
+{% endblock  %}
+

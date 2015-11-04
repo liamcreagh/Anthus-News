@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block head_title %} Welcome {% endblock %}
+
+
+{% include 'feed_item.html' %}
+{% include 'jumbo.html' %}
+
+{% block content %}
+
+
+{% if request.user.is_authenticated %}
+
+{% include 'jumbo_twitter.html' %}
+
+
+{% else %}
+
+{% include 'jumbo.html' %}
+
+{% endif %}
+
+
+{% endblock  %}

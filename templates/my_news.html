@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block head_title %} Welcome {% endblock %}
+{% load static from staticfiles %}
+
+{% block content %}
+
+{% if has_twitter %}
+{% include page_template %}
+
+{% block js %}
+    {{ block.super }}
+    <script src="http://code.jquery.com/jquery-latest.js"></script>
+    <script src="{% static 'endless_pagination/js/endless-pagination.js' %}"></script>
+    <script src="{{ STATIC_URL }}endless_pagination/js/endless-pagination.js"></script>
+    <script>
+        $.endlessPaginate({
+            paginateOnScroll: true,
+        });
+
+    </script>
+
+{% endblock %}
+
+{% else %}
+{% include 'jumbo_twitter.html' %}
+{% endif %}
+
+{% endblock %}

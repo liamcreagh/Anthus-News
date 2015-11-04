@@ -1,0 +1,46 @@
+\begin{thebibliography}{1}
+
+\bibitem{recommender_analysis}
+Doychin Doychev, Aonghus Lawlor, Rachael Rafter, and Barry Smyth.
+\newblock An analysis of recommender algorithms for online news.
+\newblock CLEF, 2014.
+
+\bibitem{user_attitudes}
+Talia Lavie, Michal Sela, Ilit Oppenheim, Ohad Inbar, and Joachim Meyer.
+\newblock User attitudes towards news content personalization.
+\newblock {\em International journal of human-computer studies},
+  68(8):483--495, 2010.
+
+\bibitem{news360}
+\url{https://news360.com/}.
+
+\bibitem{cognos}
+Saptarshi Ghosh, Naveen Sharma, Fabricio Benevenuto, Niloy Ganguly, and Krishna
+  Gummadi.
+\newblock Cognos: crowdsourcing search for topic experts in microblogs.
+\newblock In {\em Proceedings of the 35th international ACM SIGIR conference on
+  Research and development in information retrieval}, pages 575--590. ACM,
+  2012.
+
+\bibitem{infer_user_interest}
+Parantapa Bhattacharya, Muhammad~Bilal Zafar, Niloy Ganguly, Saptarshi Ghosh,
+  and Krishna~P Gummadi.
+\newblock Inferring user interests in the twitter social network.
+\newblock In {\em Proceedings of the 8th ACM Conference on Recommender
+  systems}, pages 357--360. ACM, 2014.
+
+\bibitem{nltk}
+Steven Bird, Ewan Klein, and Edward Loper.
+\newblock {\em Natural language processing with Python}.
+\newblock " O'Reilly Media, Inc.", 2009.
+
+\bibitem{andia}
+\url{http://goo.gl/EaytNO}.
+
+\bibitem{wholikeswhat}
+Saptarshi Ghosh, Naveen Sharma, Fabricio Benevenuto, Niloy Ganguly, and Krishna
+  Gummadi.
+\newblock http://twitter-app.mpi-sws.org.
+\newblock 2014.
+
+\end{thebibliography}

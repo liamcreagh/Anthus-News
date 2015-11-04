@@ -1,0 +1,47 @@
+-- Table: list_word_rec
+
+DROP TABLE IF EXISTS list_word_rec CASCADE ;
+
+CREATE TABLE list_word_rec
+(
+  word_id SERIAL NOT NULL,
+  word text,
+  CONSTRAINT list_word_rec_pkey PRIMARY KEY (word_id)
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE list_word_rec
+  OWNER TO nlstudent;
+
+-- Table: list_wf_rec
+
+DROP TABLE IF EXISTS list_wf_rec CASCADE;
+
+CREATE TABLE list_wf_rec
+(
+  frequency integer,
+  list_id bigint NOT NULL,
+  word_id integer NOT NULL,
+  CONSTRAINT list_wf_rec_pkey PRIMARY KEY (list_id, word_id),
+  CONSTRAINT list_wf_rec_fkey FOREIGN KEY (list_id)
+      REFERENCES list_rec (list_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION,
+  CONSTRAINT list_wf_rec_fkey2 FOREIGN KEY (word_id)
+      REFERENCES list_word_rec (word_id) MATCH SIMPLE
+      ON UPDATE NO ACTION ON DELETE NO ACTION
+)
+WITH (
+  OIDS=FALSE
+);
+ALTER TABLE list_wf_rec
+  OWNER TO nlstudent;
+
+-- Index: fki_list_wf_rec_fkey2
+
+DROP INDEX IF EXISTS fki_list_wf_rec_fkey2 ;
+
+CREATE INDEX fki_list_wf_rec_fkey2
+  ON list_wf_rec
+  USING btree
+  (word_id);
